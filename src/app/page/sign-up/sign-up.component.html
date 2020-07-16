@@ -1,3 +1,31 @@
-<p>
-  sign-up works!
-</p>
+<div class="displayTable" style="min-height: 500px">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign up</h3>
+      <form name="form-signup" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+          <label for="name">Full name</label>
+          <input type="text" class="form-control input-text-custom" id="name" name="name" [(ngModel)]="user.name" #name="ngModel" required />
+          <div *ngIf="f.submitted && !name.valid" class="help-block">An valid name is required.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <label for="username">Email</label>
+          <input type="text" class="form-control input-text-custom" id="username" name="username" [(ngModel)]="user.username" #username="ngModel" required />
+          <div *ngIf="f.submitted && !username.valid" class="help-block">An valid username is required.</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <label for="password">Password</label>
+          <input type="password" class="form-control input-text-custom" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required />
+          <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
+        </div>
+        <button class="btn btnPrimary" type="submit">Sign up</button>
+      </form><!-- /form -->
+
+
+    </div><!-- /card-container -->
+    <div class="redirectToLogin">
+      <span>Already have an account? <span class="redirect" routerLink="/login">Login</span></span>
+    </div>
+  </div><!-- /container -->
+</div>

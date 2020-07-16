@@ -14,6 +14,8 @@ import { UserProfileComponent } from './page/user/user-profile/user-profile.comp
 import { FooterComponent } from './component/footer/footer.component';
 import { NavigationAdminComponent } from './component/navigation/navigation-admin/navigation-admin.component';
 import { NavigationUserComponent } from './component/navigation/navigation-user/navigation-user.component';
+import {FormsModule} from '@angular/forms';
+import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -33,6 +35,9 @@ import { NavigationUserComponent } from './component/navigation/navigation-user/
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
