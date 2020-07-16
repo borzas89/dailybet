@@ -1,5 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {
+  MatButtonModule, MatCardModule,
+  MatInputModule, MatListModule,
+  MatToolbarModule, MatSelectModule,
+  MatFormFieldModule, MatTableModule,
+  MatPaginatorModule, MatSortModule,
+  MatProgressBarModule, MatIconModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +22,9 @@ import { UserProfileComponent } from './page/user/user-profile/user-profile.comp
 import { FooterComponent } from './component/footer/footer.component';
 import { NavigationAdminComponent } from './component/navigation/navigation-admin/navigation-admin.component';
 import { NavigationUserComponent } from './component/navigation/navigation-user/navigation-user.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,7 +47,23 @@ import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     HttpClientJsonpModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatListModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressBarModule,
+    MatIconModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
