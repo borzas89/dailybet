@@ -14,6 +14,7 @@ export class AuthService {
 
   public currentUser: Observable<User>;
   public currentUserSubject: BehaviorSubject<User>;
+  headers: HttpHeaders;
 
   constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -53,5 +54,25 @@ export class AuthService {
     console.log(JSON.stringify(user));
     return this.http.post(API_URL + "registration", JSON.stringify(user),
       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+  }
+
+  updateUser(user: User): Observable<any> {
+    return this.http.put(API_URL + 'user-update', JSON.stringify(user),
+      {headers: this.headers});
+  }
+
+  deleteUser(user: User): Observable<any> {
+    return this.http.post(API_URL + 'user-delete', JSON.stringify(user),
+      {headers: this.headers});
+  }
+
+  findAllUsers(): Observable<any> {
+    return this.http.get(API_URL + 'user-all',
+      {headers: this.headers});
+  }
+
+  numberOfUsers(): Observable<any> {
+    return this.http.get(API_URL + 'user-number',
+      {headers: this.headers});
   }
 }

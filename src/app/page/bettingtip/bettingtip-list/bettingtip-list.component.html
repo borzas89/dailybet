@@ -1,3 +1,93 @@
-<p>
-  bettingtip-list works!
-</p>
+<div class="container">
+
+  <div class="header">
+    <h1>{{todayDate | date: 'yyyy/MM/dd'}} </h1>
+    <h3>Betting tips</h3>
+  </div>
+
+  <div *ngIf="isAnalysisInProgress" class="row">
+    Loading...</div>
+
+  <div class="header-2 paddings-mini">
+    <h2>Daily betting tips</h2>
+  </div>
+
+  <ul class="list-group" style="min-height: 100px">
+
+    <a
+      class="list-group-item"
+      style="cursor: pointer"
+      *ngFor="let bettingTip of today_bettingtip_items ">
+      <span class="btn pull-left">
+      <img class="img-responsive" style="max-height: 25px;" [src]="'assets/img/'+bettingTip.sportcategory+'.png'"
+           alt="image">
+     </span>
+      <span >
+      {{bettingTip.event}}
+     </span>
+
+      <span class="float-right">
+    <button class="btn btn-success my-2 my-sm-0  align-content-md-end" (click)="openTip(bettingTip.tippUid)">More...</button>
+
+     </span>
+    </a>
+  </ul>
+
+  <div *ngIf="false" class="header-2 paddings-mini">
+    <h2>Single tips</h2>
+  </div>
+  <div class="container padding-top">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="recent-results results-page">
+          <div class="info-results">
+            <ul class="goals-result">
+              <li
+                class="list-group-item"
+                style="cursor: pointer; padding: 5px; margin-bottom: 20px"
+                *ngFor="let singleTip of today_singletip_items ">
+      <span class="btn pull-left">
+      <img class="img-responsive" style="max-height: 25px;" [src]="'assets/img/'+singleTip.sportcategory+'.png'"
+           alt="image">
+     </span>
+                <span class="float-right">   <button class="pull-right btn btn-info" *ngIf="false" (click)="editSingleTip(singleTip.tippUid)">Szerkeszt</button> </span>
+                <span>
+      {{singleTip.event }}
+     </span>
+                <span class="right"> {{singleTip.dateString | date: 'yyyy/MM/dd'}}</span>
+                <table class="panel-box">
+                  <tr>
+                    <th>Betting tips</th>
+                    <th>Odds</th>
+                    <th>Stake (%)</th>
+                    <th>Deadline határidő</th>
+                    <th>Tipster</th>
+                  </tr>
+                  <tr>
+                    <td>{{singleTip.tipp}}</td>
+                    <td>{{singleTip.odds}}</td>
+                    <td>{{singleTip.stake}}</td>
+                    <td>{{singleTip.deadline}}</td>
+                    <td>{{singleTip.tippster}}</td>
+                  </tr>
+                </table>
+
+                <div>
+
+                </div>
+
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
