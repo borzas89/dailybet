@@ -8,6 +8,8 @@ import {ForbiddenComponent} from './page/forbidden/forbidden.component';
 import {UserListComponent} from './page/user/user-list/user-list.component';
 import {BettingtipDetailComponent} from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
 import {BettingtipListComponent} from './page/bettingtip/bettingtip-list/bettingtip-list.component';
+import {BettingtipComponent} from './page/bettingtip/bettingtip.component';
+import {UserProfileComponent} from './page/user/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -27,12 +29,17 @@ const routes: Routes = [
     component: UserListComponent,
   },
   {
-    path: 'edit-bettingtip',
-    component: BettingtipDetailComponent,
+    path: 'user/edit/:id',
+    component: UserProfileComponent
   },
+
   {
-    path: 'list-bettingtip',
-    component: BettingtipListComponent,
+    path: 'bettingtip',
+    component: BettingtipComponent,
+    children: [
+      { path: '', component: BettingtipListComponent },
+      { path: ':id', component: BettingtipDetailComponent },
+    ]
   },
   {
     path: 'forbidden',

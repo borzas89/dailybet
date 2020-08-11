@@ -22,9 +22,11 @@ import { UserProfileComponent } from './page/user/user-profile/user-profile.comp
 import { FooterComponent } from './component/footer/footer.component';
 import { NavigationAdminComponent } from './component/navigation/navigation-admin/navigation-admin.component';
 import { NavigationUserComponent } from './component/navigation/navigation-user/navigation-user.component';
+import { JwtInterceptorService } from './service/jwt-interceptor.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserProfileComponent,
     FooterComponent,
     NavigationAdminComponent,
-    NavigationUserComponent
+    NavigationUserComponent,
+    BettingtipComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

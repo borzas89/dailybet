@@ -39,7 +39,7 @@ export class UserService {
       }));
   }
 
-  logOut(): Observable<any> {
+  logout(): Observable<any> {
     return this.http.post(API_URL + "logout", {})
       .pipe(map(response => {
         localStorage.removeItem('currentUser');
@@ -53,50 +53,7 @@ export class UserService {
       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 
-  // elemzések
-  findAllTips(): Observable<any> {
-    return this.http.get(API_URL + "bettingtips",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
 
-  // korábbi elemzések
-  findOldTips(): Observable<any> {
-    return this.http.get(API_URL + "old-bettingtips-in-week",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  findOneTippByUid(tippuid: string): Observable<any> {
-    return this.http.get(API_URL + "bettingtip/uid?tippuid="+tippuid,
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  findAllFreeTipsToday(): Observable<any> {
-    return this.http.get(API_URL + "free-bettingtips-by-today",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  findAllVipTipsToday(): Observable<any> {
-    return this.http.get(API_URL + "vip-bettingtips-by-today",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  // single tippek
-  findAllSingleTips(): Observable<any> {
-    return this.http.get(API_URL + "free-singletips",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  // single tippek
-  findVipSingleTipsToday(): Observable<any> {
-    return this.http.get(API_URL + "vip-singletips-by-today",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-  // single tippek
-  findFreeSingleTipsToday(): Observable<any> {
-    return this.http.get(API_URL + "free-singletips-by-today",
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
   SendVerificationMail() {
 
   }
