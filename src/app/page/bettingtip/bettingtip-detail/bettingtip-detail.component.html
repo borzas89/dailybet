@@ -35,7 +35,7 @@
 
     </div>
 
-    <button class="pull-right btn btn-outline-primary" (click)="editBettingtip(bettingTip)">Edit</button>
+    <button class="pull-right btn btn-outline-primary" *ngIf="isEnabled" (click)="editBettingtip(bettingTip)">Edit</button>
     <button class="pull-right btn btn-outline-info" (click)="navigateBack()">Back</button>
   </div>
 
