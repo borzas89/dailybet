@@ -1,13 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {
-  MatButtonModule, MatCardModule,
-  MatInputModule, MatListModule,
-  MatToolbarModule, MatSelectModule,
-  MatFormFieldModule, MatTableModule,
-  MatPaginatorModule, MatSortModule,
-  MatProgressBarModule, MatIconModule
-} from '@angular/material';
+import {NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +18,7 @@ import { NavigationUserComponent } from './component/navigation/navigation-user/
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
 
 
@@ -51,20 +44,9 @@ import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
     HttpClientJsonpModule,
     FormsModule,
     AppRoutingModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatListModule,
-    MatToolbarModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressBarModule,
-    MatIconModule,
     FormsModule,
-    BrowserAnimationsModule,
+    NgbModule,
+    NgbAlertModule,
     ReactiveFormsModule
 
   ],
