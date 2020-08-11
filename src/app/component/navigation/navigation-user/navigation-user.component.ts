@@ -11,19 +11,24 @@ import {UserService} from '../../../service/user.service';
 })
 export class NavigationUserComponent implements OnInit {
 
+  public isCollapsed = true;
+  currentUser: User;
+  navbarOpen = false;
+
   constructor(private userService: UserService, private router: Router) {
     this.userService.currentUser.subscribe(data => {
       this.currentUser = data;
     });
   }
-  get isAdmin() {
+
+  isAdmin() {
     return this.currentUser && this.currentUser.role === Role.ADMIN;
   }
 
-  public isCollapsed = true;
-  currentUser: User;
+  isLoggedIn() {
+    return this.currentUser != null ;
+  }
 
-  navbarOpen = false;
 
   ngOnInit() {
   }

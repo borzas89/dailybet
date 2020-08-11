@@ -14,7 +14,7 @@
           <input type="password" class="form-control input-text-custom" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required />
           <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required.</div>
         </div>
-        <button  class="btn btnPrimary" value="Login" type="submit">Login</button>
+        <button class="btn btn-primary"  value="Login" type="submit">Login</button>
       </form><!-- /form -->
 
       <div class="forgotPassword">
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="redirectToLogin">
-      <span>Don't have an account?<span class="redirect" routerLink="/sign-up">Sign up</span></span>
+      <span>Don't have an account?<span class="btn-outline-info" routerLink="/sign-up">Sign up</span></span>
     </div>
 
   </div>

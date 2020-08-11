@@ -13,7 +13,6 @@ import { BettingtipListComponent } from './page/bettingtip/bettingtip-list/betti
 import { UserListComponent } from './page/user/user-list/user-list.component';
 import { UserProfileComponent } from './page/user/user-profile/user-profile.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { NavigationAdminComponent } from './component/navigation/navigation-admin/navigation-admin.component';
 import { NavigationUserComponent } from './component/navigation/navigation-user/navigation-user.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -34,7 +33,6 @@ import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
     UserListComponent,
     UserProfileComponent,
     FooterComponent,
-    NavigationAdminComponent,
     NavigationUserComponent,
     BettingtipComponent
   ],

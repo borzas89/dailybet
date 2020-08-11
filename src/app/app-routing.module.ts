@@ -38,7 +38,10 @@ const routes: Routes = [
     component: BettingtipComponent,
     children: [
       { path: '', component: BettingtipListComponent },
+      { path: 'create', component: BettingtipDetailComponent },
       { path: ':id', component: BettingtipDetailComponent },
+
+
     ]
   },
   {
