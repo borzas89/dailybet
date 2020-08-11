@@ -55,7 +55,7 @@ export class BettingtipListComponent implements OnInit {
   openTip(item) {
     console.log(item.tippUid);
     // this.router.navigate(['/tippek', { id: item.tippUid}]);
-    this.router.navigate(['/tippek/' + item]);
+    this.router.navigate(['/bettingtip/detail/' + item]);
   }
 
   deleteTip(item) {

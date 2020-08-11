@@ -1,3 +1,45 @@
-<p>
-  bettingtip-detail works!
-</p>
+<div class="container">
+
+
+  <!--Form with header-->
+  <div class="card mb-4 col-11 col-sm-8 mx-auto p-0">
+
+    <div class="card-header">
+      <div class="bg-light text-center">
+        <span><img class="img-responsive"
+                   style="max-height: 25px;" [src]="'assets/img/' + bettingTip.sportcategory+'.png'" alt="image">
+          {{bettingTip.event}}</span>
+      </div>
+    </div>
+    <div class="text-center">
+      {{ bettingTip.analysis }}
+
+
+    </div>
+
+
+    <div class="text-center align-content-center ">
+
+      <table class="align-content-center">
+        <tr>
+          <th>Bettingtip</th>
+          <th>Odds</th>
+          <th>Stake</th>
+        </tr>
+        <tr>
+          <td>{{bettingTip.tipp}}</td>
+          <td>{{bettingTip.odds}}</td>
+          <td>{{bettingTip.stake}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <button class="pull-right btn btn-outline-primary" (click)="editBettingtip(bettingTip)">Edit</button>
+    <button class="pull-right btn btn-outline-info" (click)="navigateBack()">Back</button>
+  </div>
+
+
+
+</div>
+

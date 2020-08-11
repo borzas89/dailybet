@@ -11,6 +11,7 @@ import {BettingtipComponent} from './page/bettingtip/bettingtip.component';
 import {UserProfileComponent} from './page/user/user-profile/user-profile.component';
 import {AuthGuard} from './core/AuthGuard';
 import {Role} from './model/role';
+import {BettingtipDetailComponent} from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
 
 const routes: Routes = [
   {
@@ -39,9 +40,12 @@ const routes: Routes = [
     component: BettingtipComponent,
     children: [
       { path: '', component: BettingtipListComponent },
+      {
+        path: 'detail/:id',
+        component: BettingtipDetailComponent
+      },
+      { path: 'edit/:id', component: BettingtipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
       { path: 'create', component: BettingtipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
-      { path: ':id', component: BettingtipEditComponent },
-
 
     ]
   },

@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Bettingtip} from '../../../model/bettingtip';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
+import {BettingtipService} from '../../../service/bettingtip.service';
 
 @Component({
   selector: 'app-bettingtip-edit',
@@ -20,7 +21,8 @@ export class BettingtipEditComponent implements OnInit {
 
   constructor(private modalService: NgbModal,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private bettingtipService: BettingtipService) { }
 
 
   bettingTip = new Bettingtip();
@@ -33,6 +35,10 @@ export class BettingtipEditComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       console.log('paramMap id ' + params.get('id'));
       this.tippUid = params.get('id');
+    });
+    this.bettingTip = new Bettingtip();
+    this.bettingtipService.findOneTippByUid(this.tippUid).subscribe( data => {
+      this.bettingTip = data;
     });
   }
 
