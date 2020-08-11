@@ -8,7 +8,7 @@ import { HomeComponent } from './page/home/home.component';
 import { LoginComponent } from './page/login/login.component';
 import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
-import { BettingtipDetailComponent } from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
+import { BettingtipEditComponent } from './page/bettingtip/bettingtip-edit/bettingtip-edit.component';
 import { BettingtipListComponent } from './page/bettingtip/bettingtip-list/bettingtip-list.component';
 import { UserListComponent } from './page/user/user-list/user-list.component';
 import { UserProfileComponent } from './page/user/user-profile/user-profile.component';
@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 
 import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
+import { BettingtipDetailComponent } from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
 
 
 @NgModule({
@@ -29,12 +30,13 @@ import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
     SignUpComponent,
     ForbiddenComponent,
     BettingtipListComponent,
-    BettingtipDetailComponent,
+    BettingtipEditComponent,
     UserListComponent,
     UserProfileComponent,
     FooterComponent,
     NavigationUserComponent,
-    BettingtipComponent
+    BettingtipComponent,
+    BettingtipDetailComponent
   ],
   imports: [
     BrowserModule,

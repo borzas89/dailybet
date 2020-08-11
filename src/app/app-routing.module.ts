@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './page/home/home.component';
-import {AuthGuardService} from './service/auth-guard.service';
 import {SignUpComponent} from './page/sign-up/sign-up.component';
 import {LoginComponent} from './page/login/login.component';
 import {ForbiddenComponent} from './page/forbidden/forbidden.component';
 import {UserListComponent} from './page/user/user-list/user-list.component';
-import {BettingtipDetailComponent} from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
+import {BettingtipEditComponent} from './page/bettingtip/bettingtip-edit/bettingtip-edit.component';
 import {BettingtipListComponent} from './page/bettingtip/bettingtip-list/bettingtip-list.component';
 import {BettingtipComponent} from './page/bettingtip/bettingtip.component';
 import {UserProfileComponent} from './page/user/user-profile/user-profile.component';
+import {AuthGuard} from './core/AuthGuard';
+import {Role} from './model/role';
 
 const routes: Routes = [
   {
@@ -26,11 +27,11 @@ const routes: Routes = [
   },
   {
     path: 'user-list',
-    component: UserListComponent,
-  },
+    component: UserListComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}
+    },
   {
     path: 'user/edit/:id',
-    component: UserProfileComponent
+    component: UserProfileComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}
   },
 
   {
@@ -38,8 +39,8 @@ const routes: Routes = [
     component: BettingtipComponent,
     children: [
       { path: '', component: BettingtipListComponent },
-      { path: 'create', component: BettingtipDetailComponent },
-      { path: ':id', component: BettingtipDetailComponent },
+      { path: 'create', component: BettingtipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
+      { path: ':id', component: BettingtipEditComponent },
 
 
     ]
@@ -55,7 +56,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
