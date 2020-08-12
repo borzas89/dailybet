@@ -41,7 +41,12 @@ export class AdminService {
   // only Admin can create or modify betting tips
   createBettingTip(bettingTip: Bettingtip): Observable<any> {
     return this.http.post(API_URL + 'bettingtip-create', JSON.stringify(bettingTip),
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
+      {headers: {'Content-Type':'application/json; charset=UTF-8'}});
+  }
+
+  updateBettingTip(bettingTip: Bettingtip) {
+    return this.http.put(API_URL + 'bettingtip-update', JSON.stringify(bettingTip),
+      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
   }
 
 }

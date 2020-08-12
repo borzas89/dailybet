@@ -3,8 +3,9 @@
   <div class="card mb-4 col-11 col-sm-8 mx-auto p-0">
     <div class="card-header">
       <div class="bg-light text-center">
-        <h3>Betting tip edit</h3>
-        <ng-template #modify><h3>Betting tip edit</h3></ng-template>
+        <h3 *ngIf="!isEditMode">Add new betting tip</h3>
+        <h3 *ngIf="isEditMode">Edit betting tip</h3>
+        <ng-template #modify><h3>Edit betting tip</h3></ng-template>
       </div>
     </div>
 
@@ -89,7 +90,8 @@
             <p></p>
             <select id="category" name="category"
                     (change)="selectSportsCategory($event.target.value)">
-              <option  value="0">--All--</option>
+              <option *ngIf="!isEditMode" value="0">--All--</option>
+              <option *ngIf="isEditMode" value={{preloadSportsValue}}> {{bettingTip.sportcategory}}</option>
               <option *ngFor="let sportcategory of sports" value={{sportcategory}}>
                 {{sportcategory}}
               </option>
@@ -101,6 +103,24 @@
             <input type="number" id="stake" name="stake"
                    [(ngModel)]="bettingTip.stake"
                    class="form-control">
+          </div>
+
+          <div class="form-group" *ngIf="isEditMode">
+            <label for="result">Result (0:0)</label>
+            <input type="text" id="result" name="result"
+                   [(ngModel)]="bettingTip.result"
+                   class="form-control">
+          </div>
+
+          <div class="row">Is Tip Win? {{bettingTip.isWin}}</div>
+          <div *ngIf="isEditMode" class="form-group">
+            <p></p>
+            <select id="bet_tip_iswin" name="bet_tip_iswin" (change)="selectTippIsWin($event.target.value)">
+              <option *ngIf="!isEditMode" value="0">--All--</option>
+              <option *ngFor="let isTippWin of isTippWins" value={{isTippWin}}>
+                {{isTippWin}}
+              </option>
+            </select>
           </div>
 
 
