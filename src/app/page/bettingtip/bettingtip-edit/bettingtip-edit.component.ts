@@ -13,7 +13,6 @@ import {AdminService} from '../../../service/admin.service';
 })
 export class BettingtipEditComponent implements OnInit {
 
-
   sports: any[] = ['baseball', 'basketball', 'boxing', 'football', 'hockey',
     'motorsport', 'soccer', 'tennis', 'volleyball'];
   isTippWins: any[]  = ['YES', 'NO'];
@@ -27,16 +26,12 @@ export class BettingtipEditComponent implements OnInit {
               private bettingtipService: BettingtipService,
               private adminService: AdminService) { }
 
-
   bettingTip = new Bettingtip();
   selectedCategory: string;
   isEditMode = false;
   tippUid: string;
   preloadSportsValue;
   selectedTippIsWin: string;
-
-
-
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -56,8 +51,8 @@ export class BettingtipEditComponent implements OnInit {
   }
 
   preloadSportsValues(sportsCategory: string) {
-    for(let i = 0; i < this.sports.length; i++) {
-      if(this.sports[i] === sportsCategory) {
+    for (let i = 0; i < this.sports.length; i++) {
+      if (this.sports[i] === sportsCategory) {
         this.preloadSportsValue  = i;
         this.selectedCategory = this.preloadSportsValue;
       }
@@ -104,8 +99,6 @@ export class BettingtipEditComponent implements OnInit {
         console.log('error ' + err.valueOf().toString());
       });
 
-
-
     } else {
       // create betting tip
       this.bettingTip.event = ngForm.value.event;
@@ -132,8 +125,6 @@ export class BettingtipEditComponent implements OnInit {
       });
 
     }
-
-
 
   }
 

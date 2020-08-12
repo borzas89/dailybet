@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/user';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Bettingtip} from '../model/bettingtip';
 
@@ -17,13 +17,11 @@ export class AdminService {
   }
 
   updateUser(user: User): Observable<any> {
-    return this.http.put(API_URL + 'user-update', JSON.stringify(user),
-      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
+    return this.http.put(API_URL + 'user-update', JSON.stringify(user));
   }
 
   deleteUser(user: User): Observable<any> {
-    return this.http.post(API_URL + 'user-delete', JSON.stringify(user),
-      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
+    return this.http.post(API_URL + 'user-delete', JSON.stringify(user));
   }
 
   findAllUsers(): Observable<any> {
@@ -40,13 +38,11 @@ export class AdminService {
 
   // only Admin can create or modify betting tips
   createBettingTip(bettingTip: Bettingtip): Observable<any> {
-    return this.http.post(API_URL + 'bettingtip-create', JSON.stringify(bettingTip),
-      {headers: {'Content-Type':'application/json; charset=UTF-8'}});
+    return this.http.post(API_URL + 'bettingtip-create', JSON.stringify(bettingTip));
   }
 
   updateBettingTip(bettingTip: Bettingtip) {
-    return this.http.put(API_URL + 'bettingtip-update', JSON.stringify(bettingTip),
-      {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
+    return this.http.put(API_URL + 'bettingtip-update', JSON.stringify(bettingTip));
   }
 
 }

@@ -25,22 +25,21 @@ export class UserService {
 
   login(user: User): Observable<any> {
     const headers = new HttpHeaders(user ? {
-      authorization:'Basic ' + btoa(user.username + ':' + user.password)
+      authorization: 'Basic ' + btoa(user.username + ':' + user.password)
     }:{});
 
-    return this.http.get<any> (API_URL + "login", {headers: headers})
+    return this.http.get<any> (API_URL + 'login', {headers})
       .pipe(map(response => {
-        if(response){
+        if (response) {
           localStorage.setItem('currentUser', JSON.stringify(response));
           this.currentUserSubject.next(response);
         }
-        console.log(response)
         return response;
       }));
   }
 
   logout(): Observable<any> {
-    return this.http.post(API_URL + "logout", {})
+    return this.http.post(API_URL + 'logout', {})
       .pipe(map(response => {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
@@ -49,17 +48,7 @@ export class UserService {
 
   register(user: User): Observable<any> {
     console.log(JSON.stringify(user));
-    return this.http.post(API_URL + "registration", JSON.stringify(user),
-      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
-  }
-
-
-  SendVerificationMail() {
-
-  }
-
-  ForgotPassword(value: string) {
-
+    return this.http.post(API_URL + 'registration', JSON.stringify(user));
   }
 
   isLoggedin() {
