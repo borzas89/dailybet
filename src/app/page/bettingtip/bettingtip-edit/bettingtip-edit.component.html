@@ -13,69 +13,69 @@
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
           <div class="form-group">
-            <label for="bet_tip_name">Event name</label>
+            <label for="event">Event name</label>
             <input type="text"
-                   id="bet_tip_name"
+                   id="event"
                    ngModel class="form-control"
                    [(ngModel)]="bettingTip.event"
-                   name="bet_tip_name"
+                   name="event"
             >
           </div>
 
           <div class="form-group">
-            <label for="bet_tip_date">Event date</label>
-            <input type="datetime-local" id="bet_tip_date"
+            <label for="date">Event date</label>
+            <input type="datetime-local" id="date"
                    class="form-control mb-3"
                    placeholder="Event date"
                    required
                    [(ngModel)]="bettingTip.dateString"
-                   name="bet_tip_date"
+                   name="date"
             >
 
           </div>
 
           <div class="form-group">
-            <label for="bet_tip_deadline">Deadline</label>
-            <input type="time" id="bet_tip_deadline"
+            <label for="deadline">Deadline</label>
+            <input type="time" id="deadline"
                    class="form-control mb-3"
                    placeholder="Deadline"
                    required
                    [(ngModel)]="bettingTip.deadline"
-                   name="bet_tip_deadline"
+                   name="deadline"
             >
           </div>
 
           <div class="form-group">
-            <label for="bet_tip_image_url">Pic URL</label>
+            <label for="image_url">Pic URL</label>
             <input type="text"
-                   id="bet_tip_image_url"
+                   id="image_url"
                    [(ngModel)]="bettingTip.picUrl"
-                   name="bet_tip_image_url"
+                   name="image_url"
                    ngModel class="form-control">
           </div>
 
 
           <div class="form-group">
-            <label for="bet_tip_tipp">Betting tip</label>
+            <label for="bettingtip">Betting tip</label>
             <input type="text"
-                   id="bet_tip_tipp"
+                   id="bettingtip"
                    [(ngModel)]="bettingTip.tipp"
-                   name="bet_tip_tipp"
+                   name="bettingtip"
                    ngModel class="form-control">
           </div>
           <div class="form-group">
-            <label for="bet_tip_odds">Odds</label>
+            <label for="odds">Odds</label>
             <input type="number"
-                   id="bet_tip_odds"
-                   name="bet_tip_odds"
+                   id="odds"
+                   name="odds"
                    [(ngModel)]="bettingTip.odds"
                    ngModel class="form-control">
           </div>
 
 
           <div class="form-group">
-            <label for="bet_tip_analysis">Analysis</label>
-            <textarea id="bet_tip_analysis"
+            <label for="analysis">Analysis</label>
+            <textarea id="analysis"
                       style="min-height: 150px"
                       class="form-control"
                       placeholder="analysis"
@@ -85,9 +85,9 @@
           </div>
 
           <div class="form-group">
-            <label for="bet_tip_category">Sport category: </label>
+            <label for="category">Sport category: </label>
             <p></p>
-            <select id="bet_tip_category" name="bet_tip_category"
+            <select id="category" name="category"
                     (change)="selectSportsCategory($event.target.value)">
               <option  value="0">--All--</option>
               <option *ngFor="let sportcategory of sports" value={{sportcategory}}>
@@ -97,27 +97,15 @@
           </div>
 
           <div class="form-group">
-            <label >Tipster: {{bettingTip.tippster}}</label>
-
-          </div>
-
-
-
-          <div class="form-group">
-            <label for="bet_tip_stake">Stake</label>
-            <input type="number" id="bet_tip_stake" name="bet_tip_stake"
+            <label for="stake">Stake</label>
+            <input type="number" id="stake" name="stake"
                    [(ngModel)]="bettingTip.stake"
                    class="form-control">
           </div>
 
 
-          <div class="form-group" >
-            <label for="bet_tip_result">Result (for example 0:0)</label>
-            <input type="text" id="bet_tip_result" name="bet_tip_result"
-                   [(ngModel)]="bettingTip.result"
-                   class="form-control">
-          </div>
-          <button class="btn btn-primary" style="margin: 10px" type="submit"  [disabled]="!f.valid"
+
+          <button class="btn btn-primary" style="margin: 10px" type="submit"
                   (click)="open(content)">Save
           </button>
           <button class="btn btn-primary" style="margin: 10px"

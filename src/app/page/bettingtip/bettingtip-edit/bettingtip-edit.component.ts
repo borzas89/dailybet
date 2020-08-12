@@ -4,6 +4,7 @@ import {Bettingtip} from '../../../model/bettingtip';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BettingtipService} from '../../../service/bettingtip.service';
+import {AdminService} from '../../../service/admin.service';
 
 @Component({
   selector: 'app-bettingtip-edit',
@@ -22,7 +23,8 @@ export class BettingtipEditComponent implements OnInit {
   constructor(private modalService: NgbModal,
               private route: ActivatedRoute,
               private router: Router,
-              private bettingtipService: BettingtipService) { }
+              private bettingtipService: BettingtipService,
+              private adminService: AdminService) { }
 
 
   bettingTip = new Bettingtip();
@@ -38,12 +40,36 @@ export class BettingtipEditComponent implements OnInit {
     });
     this.bettingTip = new Bettingtip();
     this.bettingtipService.findOneTippByUid(this.tippUid).subscribe( data => {
-      this.bettingTip = data;
+      if ( data !== null ) {
+        this.bettingTip = data;
+      }
     });
   }
 
   onSubmit(ngForm: NgForm): void {
-    const putObject = Object.assign({id: this.bettingTip.id}, ngForm.value);
+    // create betting tip
+    this.bettingTip.event = ngForm.value.event;
+    this.bettingTip.tippster = this.adminService.currentUser.username;
+    this.bettingTip.sportcategory = this.selectedCategory;
+    this.bettingTip.category = "FREE";
+    this.bettingTip.deadline = ngForm.value.deadline;
+    this.bettingTip.result = "";
+    this.bettingTip.isWin = false;
+    this.bettingTip.datestamp = new Date(ngForm.value.date);
+    this.bettingTip.dateString = ngForm.value.date;
+
+    const str = this.bettingTip.event;
+    const dateStr = this.bettingTip.dateString;
+    const replaced = str.split(' ').join('-');
+    const dateRep = dateStr.split('T').join('-');
+    this.bettingTip.tippUid = replaced + '-' + dateRep ;
+
+    this.adminService.createBettingTip(this.bettingTip).subscribe(data => {
+      this.modalMessage = 'Success';
+    }, err => {
+      this.modalMessage = 'Error has occured';
+      console.log('error ' + err.valueOf().toString());
+    });
 
   }
 

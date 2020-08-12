@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {User} from '../model/user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Bettingtip} from '../model/bettingtip';
 
 const API_URL = 'http://localhost:5000/api/admin/';
 
@@ -35,6 +36,12 @@ export class AdminService {
 
   numberOfUsers(): Observable<any> {
     return this.http.get(API_URL + 'user-number');
+  }
+
+  // only Admin can create or modify betting tips
+  createBettingTip(bettingTip: Bettingtip): Observable<any> {
+    return this.http.post(API_URL + 'bettingtip-create', JSON.stringify(bettingTip),
+      {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 
 }

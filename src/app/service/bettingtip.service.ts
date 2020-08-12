@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Bettingtip} from '../model/bettingtip';
 
 const API_URL = 'http://localhost:5000/api/user/';
 
@@ -50,4 +51,5 @@ export class BettingtipService {
     return this.http.get(API_URL + "free-singletips-by-today",
       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
+
 }

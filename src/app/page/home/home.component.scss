@@ -1,0 +1,13 @@
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.bgrImage{
+  height:400px;
+  background: url('/assets/img/jumbotron-back2.jpg') no-repeat center center;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
