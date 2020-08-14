@@ -28,7 +28,7 @@ export class BettingtipService {
   }
 
   findAllFreeTipsToday(): Observable<any> {
-    return this.http.get(API_URL + "free-bettingtips-by-today",
+    return this.http.get(API_URL + "free-bettingtips",
       {headers: {"Content-Type":"application/json; charset=UTF-8"}});
   }
 

@@ -1,6 +1,7 @@
 .primary-navigation {
   height: 70px;
-  background: url('src/assets/img/pattern.jpg') fixed #0050ab;
+  background-color: #0050ab;
+  background-attachment: fixed;
 }
 
 .nav-link, .primary-navigation h5 {

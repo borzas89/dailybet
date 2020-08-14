@@ -4,16 +4,27 @@ import {Router} from '@angular/router';
 import {Role} from '../../../model/role';
 import {UserService} from '../../../service/user.service';
 
+export interface IMenuItem {
+  url: string;
+  text: string;
+  disabled?: boolean;
+  icon?: string;
+}
+
 @Component({
   selector: 'app-navigation-user',
   templateUrl: './navigation-user.component.html',
   styleUrls: ['./navigation-user.component.scss']
 })
 export class NavigationUserComponent implements OnInit {
-
-  public isCollapsed = true;
   currentUser: User;
-  navbarOpen = false;
+
+  menuItems: IMenuItem[] = [
+    {url: '/', text: 'Home', icon: 'home'},
+    {url: '/user-list', text: 'Users', icon: ''},
+    {url: '/bettingtip', text: 'Bettingtips', icon: ''},
+    {url: '/bettingtip/create/', text: 'Add betting tips', icon: ''},
+  ];
 
   constructor(private userService: UserService, private router: Router) {
     this.userService.currentUser.subscribe(data => {
@@ -33,9 +44,6 @@ export class NavigationUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleNavbar() {
-    this.navbarOpen = !this.navbarOpen;
-  }
   logout() {
     this.userService.logout().subscribe(data => {
       this.router.navigate(['/login']);
