@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Bettingtip} from '../model/bettingtip';
 
 const API_URL = 'http://localhost:5000/api/admin/';
@@ -11,6 +11,19 @@ const API_URL = 'http://localhost:5000/api/admin/';
 })
 export class AdminService {
   currentUser: User;
+
+  watcher$: BehaviorSubject<User[]> = new BehaviorSubject([]);
+
+  refresh(): void {
+    this.findAllUsers().toPromise().then(
+      users => this.watcher$.next(users as User[]),
+      err => console.error(err)
+    );
+  }
+
+  get(id?: string | number): Observable<User | User[]> {
+    return this.http.get<User | User[]>(`${API_URL + 'user-get/id?id'}=${id || ``}`);
+  }
 
   constructor(private http: HttpClient) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

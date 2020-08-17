@@ -9,20 +9,19 @@ import {Observable} from 'rxjs';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
-  userColumns: {key: string, label: string}[] = [
-    {key: 'id', label: 'ID'},
-    {key: 'name', label: 'Name'},
-    {key: 'username', label: 'Email'},
-    {key: 'role', label: 'Role'},
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'username',
+    'role'
   ];
 
   selectedUser: User = new User();
 
   constructor(private adminService: AdminService) { }
 
-  list$: Observable<User | User[]> = this.adminService.findAllUsers();
-  cols: any[] = this.userColumns;
+  dataSource$: Observable< User[] > = this.adminService.findAllUsers();
+
 
   ngOnInit() {
 
