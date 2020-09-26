@@ -1,45 +1,60 @@
-<div class="container">
+<div class="container" style="min-height: 500px;">
 
 
-  <!--Form with header-->
-  <div class="card mb-4 col-11 col-sm-8 mx-auto p-0">
+  <div class="tab-pane active" id="summary">
 
-    <div class="card-header">
-      <div class="bg-light text-center">
-        <span><img class="img-responsive"
-                   style="max-height: 25px;" [src]="'assets/img/' + bettingTip.sportcategory+'.png'" alt="image">
-          {{bettingTip.event}}</span>
+    <div class="card-header panel-box padding-b">
+      <div class="titles">
+        <h4><span><img class="img-responsive" style="max-height: 25px;" [src]="'assets/img/'+bettingTip.sportcategory+'.png'"
+                       alt="image">
+          {{bettingTip.event}}</span></h4>
+
+      </div>
+      <div class="row">
+        <div>
+          <img class="img-fluid" [src]="bettingTip.picUrl" alt="">
+        </div>
+
+        <div class="col-lg-12 col-xl-8">
+          {{ bettingTip.analysis }}
+        </div>
       </div>
     </div>
-    <div class="text-center">
-      {{ bettingTip.analysis }}
+    <div>
 
+      <div class="row">
+        <div class="col-md-12">
+          <h3 >Betting tip</h3>
+          <table class="panel-box">
+            <tr>
+              <th>Betting tip</th>
+              <th>Odds</th>
+              <th>Stake (%)</th>
+              <th>Deadline</th>
+              <th>Tipster</th>
+            </tr>
+            <tr>
+              <td>{{bettingTip.tipp}}</td>
+              <td>{{bettingTip.odds}}</td>
+              <td>{{bettingTip.stake}}</td>
+              <td>{{bettingTip.deadline}}</td>
+              <td>{{bettingTip.tippster}}</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="card mb-4 col-11 col-sm-8 mx-auto p-0">
+          <button class="pull-right btn btn-outline-primary" (click)="editBettingtip(bettingTip)" >Edit</button>
+          <button class="pull-right btn btn-outline-info" (click)="navigateBack()">Back</button>
+        </div>
+
+      </div>
 
     </div>
 
-
-    <div class="text-center align-content-center ">
-
-      <table class="align-content-center">
-        <tr>
-          <th>Bettingtip</th>
-          <th>Odds</th>
-          <th>Stake</th>
-        </tr>
-        <tr>
-          <td>{{bettingTip.tipp}}</td>
-          <td>{{bettingTip.odds}}</td>
-          <td>{{bettingTip.stake}}</td>
-        </tr>
-      </table>
-
-    </div>
-
-    <button class="pull-right btn btn-outline-primary" *ngIf="isEnabled" (click)="editBettingtip(bettingTip)">Edit</button>
-    <button class="pull-right btn btn-outline-info" (click)="navigateBack()">Back</button>
   </div>
 
-
-
 </div>
+
 

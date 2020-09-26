@@ -1,5 +1,5 @@
-<div class="container jumbotron bgrImage"
-     style="align-content: center">
+<div class="hero-header hero-bg bg-image-builder"
+     style="max-height: 600px; background: url(&quot;../assets/img/cover_ball.jpg&quot;);" data-selector=".bg-image-builder">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 no-margin">
@@ -17,7 +17,7 @@
            routerLink="/bettingtip"
            role="button"
         >
-          Free stuff
+          Free betting tips
         </a>
       </div>
       <div class="col-lg-12">
@@ -26,6 +26,46 @@
     </div>
   </div>
 </div>
+
+
+<div class="container padding-top">
+  <h2 class="header-2 padding-mini">Previous tips</h2>
+  <div class="row portfolioContainer">
+
+    <ul class="row portfolioContainer">
+      <li class="col-md-6 col-lg-4 col-xl-3 group-a"
+          *ngFor="let bettingTip of old_analysis ">
+
+        <div class="item-bettingtip">
+          <div class="head-team">
+            <img class="img-responsive" [src]="bettingTip.picUrl" alt="">
+            <div class="overlay"><a (click)="openTip(bettingTip.tippUid)"></a></div>
+          </div>
+          <div class="info-team">
+                                    <span class="logo-team">
+                                         <img  [src]="'assets/img/'+bettingTip.sportcategory+'.png'">
+                                    </span>
+            <h4>{{bettingTip.event}}</h4>
+            <span class="location-team">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+              {{bettingTip.datestamp | date}}
+                                    </span>
+            <span class="group-team">
+                                        <i class="fa fa-trophy" aria-hidden="true"></i>
+              {{bettingTip.result}}
+                                    </span>
+          </div>
+          <div  class="btn-green"  (click)="openTip(bettingTip.tippUid)" >Details <i class="fa fa-angle-right" aria-hidden="true"></i></div>
+        </div>
+      <li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
 
 
 
