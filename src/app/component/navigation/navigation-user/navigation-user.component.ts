@@ -21,7 +21,7 @@ export class NavigationUserComponent implements OnInit {
 
   menuItems: IMenuItem[] = [
     {url: '/', text: 'Home', icon: 'home'},
-    {url: '/user-list', text: 'Users', icon: ''},
+    {url: '/users', text: 'Users', icon: ''},
     {url: '/bettingtip', text: 'Bettingtips', icon: ''},
     {url: '/bettingtip/create/', text: 'Add betting tips', icon: ''},
   ];

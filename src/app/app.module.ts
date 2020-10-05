@@ -25,7 +25,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
@@ -34,8 +33,6 @@ import { SignUpComponent } from './page/sign-up/sign-up.component';
 import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 import { BettingtipEditComponent } from './page/bettingtip/bettingtip-edit/bettingtip-edit.component';
 import { BettingtipListComponent } from './page/bettingtip/bettingtip-list/bettingtip-list.component';
-import { UserListComponent } from './page/user/user-list/user-list.component';
-import { UserProfileComponent } from './page/user/user-profile/user-profile.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { NavigationUserComponent } from './component/navigation/navigation-user/navigation-user.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
@@ -56,8 +53,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ForbiddenComponent,
     BettingtipListComponent,
     BettingtipEditComponent,
-    UserListComponent,
-    UserProfileComponent,
     FooterComponent,
     NavigationUserComponent,
     BettingtipComponent,

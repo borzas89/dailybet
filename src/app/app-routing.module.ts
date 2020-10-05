@@ -27,14 +27,9 @@ const routes: Routes = [
     component: SignUpComponent,
   },
   {
-    path: 'user-list',
-    component: UserListComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}
-    },
-  {
-    path: 'user/edit/:id',
-    component: UserProfileComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}
+    path: 'users',
+    loadChildren: 'src/app/page/user/user.module#UserModule'
   },
-
   {
     path: 'bettingtip',
     component: BettingtipComponent,

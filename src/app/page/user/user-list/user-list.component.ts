@@ -57,7 +57,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   onEdit(user: User): void {
-    this.router.navigate( ['user/edit/' + user.id]);
+    this.router.navigate( ['users/edit/' + user.id]);
   }
 
   onDelete(user: User): void {
@@ -66,7 +66,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   deleteUser(user: User) {
     this.selectedUser = user;
-    this.adminService.deleteUser(this.selectedUser).subscribe(
+    this.adminService.deleteUser(this.selectedUser).toPromise().then(
 
     );
   }
