@@ -42,6 +42,10 @@ import {HTTP_INTERCEPTORS, HttpClientJsonpModule, HttpClientModule} from '@angul
 import { BettingtipComponent } from './page/bettingtip/bettingtip.component';
 import { BettingtipDetailComponent } from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SingletipComponent } from './page/singletip/singletip.component';
+import { SingletipListComponent } from './page/singletip/singletip-list/singletip-list.component';
+import { SingletipEditComponent } from './page/singletip/singletip-edit/singletip-edit.component';
+import { DialogComponent } from './component/dialog/dialog.component';
 
 
 @NgModule({
@@ -56,7 +60,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     NavigationUserComponent,
     BettingtipComponent,
-    BettingtipDetailComponent
+    BettingtipDetailComponent,
+    SingletipComponent,
+    SingletipListComponent,
+    SingletipEditComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

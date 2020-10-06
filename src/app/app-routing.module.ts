@@ -12,6 +12,9 @@ import {UserProfileComponent} from './page/user/user-profile/user-profile.compon
 import {AuthGuard} from './core/AuthGuard';
 import {Role} from './model/role';
 import {BettingtipDetailComponent} from './page/bettingtip/bettingtip-detail/bettingtip-detail.component';
+import {SingletipComponent} from './page/singletip/singletip.component';
+import {SingletipListComponent} from './page/singletip/singletip-list/singletip-list.component';
+import {SingletipEditComponent} from './page/singletip/singletip-edit/singletip-edit.component';
 
 const routes: Routes = [
   {
@@ -41,6 +44,16 @@ const routes: Routes = [
       },
       { path: 'edit/:id', component: BettingtipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
       { path: 'create', component: BettingtipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
+
+    ]
+  },
+  {
+    path: 'singletip',
+    component: SingletipComponent,
+    children: [
+      { path: '', component: SingletipListComponent },
+      { path: 'edit/:id', component: SingletipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
+      { path: 'create', component: SingletipEditComponent, canActivate: [AuthGuard] , data: {roles: [Role.ADMIN]}},
 
     ]
   },

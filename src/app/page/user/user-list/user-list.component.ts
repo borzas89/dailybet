@@ -6,6 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {Router} from '@angular/router';
 import {take} from 'rxjs/operators';
+import {MessageService} from '../../../service/message.service';
 
 @Component({
   selector: 'app-user-list',
@@ -15,7 +16,6 @@ import {take} from 'rxjs/operators';
 export class UserListComponent implements OnInit, OnDestroy {
 
   dataSource: MatTableDataSource<User> = new MatTableDataSource<User>();
-  selectedUser: User = new User();
   displayedColumns: string[] = [
     'id',
     'name',
@@ -31,14 +31,16 @@ export class UserListComponent implements OnInit, OnDestroy {
   @ViewChild('dialogTemplate') dialogTemplate: TemplateRef<any>;
 
   constructor(private adminService: AdminService,
+              private messageService: MessageService,
               private router: Router)
   { }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSubscription = this.adminService.findAllUsers().subscribe(
+    this.dataSubscription = this.adminService.watcher$.subscribe(
       users => this.dataSource.data = (users as unknown as User[])
     );
+    this.adminService.refresh();
 
     this.dataSource.filterPredicate = (data: User, filter: string) => {
       const key = this.currentFilterKey || '';
@@ -61,15 +63,30 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(user: User): void {
+    const dialogData = {
+      title: 'Are you sure?',
+      content: 'The user will be deleted permanently.',
+      template: this.dialogTemplate,
+    };
+    this.messageService.openDialog(dialogData).pipe(
+      take(1)
+    ).subscribe(
+      result => {
+        if (!result) {
+          return;
+        }
 
-  }
-
-  deleteUser(user: User) {
-    this.selectedUser = user;
-    this.adminService.deleteUser(this.selectedUser).toPromise().then(
-
+        this.adminService.deleteUser(user).toPromise().then(
+          response => this.messageService.openSnackBar(
+            3000,
+            'User has been deleted.'
+          ),
+          err => console.error(err)
+        );
+      }
     );
   }
+
 
 }
 
