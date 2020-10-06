@@ -1,4 +1,4 @@
-export class SingleTip {
+export class Singletip {
   id: string;
   event: string;
   tipp: string;

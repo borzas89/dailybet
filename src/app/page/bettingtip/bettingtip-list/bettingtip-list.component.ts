@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Bettingtip} from '../../../model/bettingtip';
-import {SingleTip} from '../../../model/single-tip';
+import {Singletip} from '../../../model/singletip';
 import {Router} from '@angular/router';
 import {BettingtipService} from '../../../service/bettingtip.service';
 
@@ -13,7 +13,7 @@ export class BettingtipListComponent implements OnInit {
 
   items: Array<any>;
   today_bettingtip_items: Array<Bettingtip>;
-  today_singletip_items: Array<SingleTip>;
+  today_singletip_items: Array<Singletip>;
   isAnalysisInProgress: boolean = true;
   todayDate: Date;
   constructor(private bettingtipService: BettingtipService,
